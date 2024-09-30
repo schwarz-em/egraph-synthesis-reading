@@ -92,3 +92,20 @@ Balkind:
 
 - [ROVER: RTL Optimization via Verified E-Graph Rewriting](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10549954)
 - [Automatic Datapath Optimization using E-Graphs](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9974492)
+
+### Notes
+
+- Focused on arithmetic optimizations, usually would be done by hand
+- Rewrite rules are specific to bitwidths
+    - Could also require same bitwidth for each op, then have rewrite rules to expand bitwidth
+	- Handled with conditions here
+- Optimize at a word level instead of bit level 
+    - Capture optimizations that the synthesis tool doesn’t 
+- Rewrite so that the synthesis tool can apply its own optimizations
+	- Understanding of how synthesis tool works
+	- Incorporated into cost function
+- Use SMT solver to check correctness of rewrite rules
+- Randomness in commercial tool causes arbitrary rewrite rules to have varying results
+    - Noise floor
+- Scope optimization boundaries to avoid excessive rewrites
+
